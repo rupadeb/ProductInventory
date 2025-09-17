@@ -35,3 +35,12 @@ Thumbs.db
 # Misc
 /.angular/cache
 /.angular/
+*.ts
+*.json
+*.md
+*.mjs
+*.scss
+*.css
+*.template
+*.txt
+*.html
