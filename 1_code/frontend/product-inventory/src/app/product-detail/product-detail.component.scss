@@ -1,0 +1,43 @@
+button {
+  display: flex;
+  align-items: center;
+  --button-accent: var(--bright-blue);
+  background: color-mix(in srgb, var(--button-accent) 65%, transparent);
+  color: white;
+  padding-inline: 0.75rem;
+  padding-block: 0.375rem;
+  border-radius: 0.5rem;
+  border: 0;
+  transition: background 0.3s ease;
+  font-family: var(--inter-font);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4rem;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(247, 137, 4);
+}
+div {
+  padding-inline: 0.75rem;
+  padding-block: 0.375rem;
+  border: none;
+}
+.pill-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.pill {
+  display: flex;
+  --pill-accent: var(--gray-900);
+  background-color: rgb(200, 243, 243);
+  align-items: center;
+  padding-inline: 0.75rem;
+  padding-block: 0.375rem;
+  border-radius: 2.75rem;
+  border: 0;
+}

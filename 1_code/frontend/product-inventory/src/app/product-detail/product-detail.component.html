@@ -1,0 +1,14 @@
+     @let selectedProduct = product()!;
+
+     @if(product()){
+        <div>
+        <h1>Your selectedProduct: 
+        <strong>{{selectedProduct.name}}</strong>
+        </h1>
+        <p> 
+        <strong>Price: {{selectedProduct.price | currency}}</strong>
+        </p>
+      
+        <button (click)="addToCart()">Add to cart</button>
+        </div>
+        }

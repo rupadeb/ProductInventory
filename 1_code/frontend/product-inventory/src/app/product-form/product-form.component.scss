@@ -1,0 +1,36 @@
+/* Make all form fields take full width */
+mat-form-field.w-100 {
+  width: 100%;
+}
+
+/* Add spacing between fields */
+mat-form-field {
+  margin-bottom: 1rem;
+}
+
+/* Dialog title styling */
+h2[mat-dialog-title] {
+  margin: 10;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3f51b5; /* Material Indigo */
+}
+
+/* Form content area */
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  min-width: 320px;
+  max-width: 500px;
+}
+
+/* Action buttons row */
+mat-dialog-actions {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #eee;
+}
+
+mat-dialog-actions button {
+  min-width: 90px;
+}
