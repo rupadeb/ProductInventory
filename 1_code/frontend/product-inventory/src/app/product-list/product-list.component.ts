@@ -22,10 +22,6 @@ import {
   imports: [
     CommonModule,
     MatTableModule,
-    MatHeaderCellDef,
-    MatCellDef,
-    MatHeaderRowDef,
-    MatRowDef,
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',

@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component';
 import { APP_SETTINGS, appSettings } from './app.settings';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [{ provide: APP_SETTINGS, useValue: appSettings }],
