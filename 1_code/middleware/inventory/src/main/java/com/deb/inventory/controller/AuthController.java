@@ -21,36 +21,35 @@ import com.deb.inventory.service.AuthService;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200") 
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
-    
     private final UserRepository userRepository;
 
     public AuthController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-  @PostMapping("/login")
-public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-    Optional<User> userOpt = userRepository.findByUsername(loginRequest.getUsername());
-    
-    if (userOpt.isPresent()) {
-        User user = userOpt.get();
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        
-        if (encoder.matches(loginRequest.getPassword(), user.getPassword())) {
-            // Build JSON response without password
-            Map<String, Object> response = new HashMap<>();
-            response.put("id", user.getId());
-            response.put("username", user.getUsername());
-            response.put("roles", user.getRoles());
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        Optional<User> userOpt = userRepository.findByUsername(loginRequest.getUsername());
 
-            return ResponseEntity.ok(response);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+            if (encoder.matches(loginRequest.getPassword(), user.getPassword())) {
+                // Build JSON response without password
+                Map<String, Object> response = new HashMap<>();
+                response.put("id", user.getId());
+                response.put("username", user.getUsername());
+                response.put("roles", user.getRoles());
+
+                return ResponseEntity.ok(response);
+            }
         }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect credentials");
     }
-    
-    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-}
 
 }
