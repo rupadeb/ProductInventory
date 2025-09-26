@@ -1,7 +1,7 @@
 .product-container {
   width: 100%;
   margin: 20px auto;
-  background-color: #dde1e4; /* light background */
+  background-color: #e5f2fc; /* light background */
   border: 1px solid #3b523c; /* green border */
   border-radius: 10px;
   overflow: hidden;
@@ -14,17 +14,17 @@
   margin-top: 1rem;
 }
 
-.mat-column-serial {
+::ng-deep .mat-column-serial {
   width: 10%; /* small column */
 }
-.mat-column-name {
+::ng-deep .mat-column-name {
   width: 30%; /* bigger for long names */
 }
-.mat-column-quantity,
-.mat-column-price {
+::ng-deep .mat-column-quantity,
+::ng-deep .mat-column-price {
   width: 20%;
 }
-.mat-column-actions {
+::ng-deep .mat-column-actions {
   width: 10%;
   padding: 10px;
   text-align: center;

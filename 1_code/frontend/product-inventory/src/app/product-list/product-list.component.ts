@@ -1,20 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from '../product';
-import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductService } from '../product.service';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
-import {
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCellDef,
-  MatHeaderRowDef,
-  MatRowDef,
-  MatTable,
-  MatTableDataSource,
-  MatTableModule,
-} from '@angular/material/table';
+import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -22,7 +12,7 @@ import { AuthService } from '../auth.service';
   standalone: true,
   imports: [CommonModule, MatTableModule],
   templateUrl: './product-list.component.html',
-  styleUrl: './product-list.component.scss',
+  styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<Product>;
@@ -53,7 +43,6 @@ export class ProductListComponent implements OnInit {
 
   loadProducts() {
     this.productService.getProducts().subscribe((products) => {
-      // Add a serial property only for display
       this.products = products.map((product, index) => ({
         ...product,
         serial: index + 1,
@@ -65,28 +54,24 @@ export class ProductListComponent implements OnInit {
   addProduct() {
     const dialogRef = this.dialog.open(ProductFormComponent, {
       width: '400px',
-      data: null, // empty form for adding
+      data: null,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.productService.addProduct(result).subscribe(() => {
-          this.loadProducts();
-        });
+        this.productService.addProduct(result).subscribe(() => this.loadProducts());
       }
     });
   }
 
   editProduct(product: Product) {
     const dialogRef = this.dialog.open(ProductFormComponent, {
-      data: product, // pass existing product into the form
+      data: product,
     });
 
     dialogRef.afterClosed().subscribe((result: Product | undefined) => {
       if (result) {
-        this.productService.updateProduct(product.id, result).subscribe(() => {
-          this.loadProducts(); // refresh list after save
-        });
+        this.productService.updateProduct(product.id, result).subscribe(() => this.loadProducts());
       }
     });
   }
@@ -94,16 +79,13 @@ export class ProductListComponent implements OnInit {
   deleteProduct(product: Product) {
     if (confirm('Are you sure you want to delete this product?')) {
       this.productService.deleteProduct(product.id).subscribe(() => {
-        // Remove by ID (safer than name)
         const updatedProducts = this.products
           .filter((p) => p.id !== product.id)
           .map((p, index) => ({ ...p, serial: index + 1 }));
 
-        // Update products array and datasource
         this.products = updatedProducts;
         this.dataSource.data = updatedProducts;
         this.table.renderRows();
-        // this.cd.detectChanges();
       });
     }
   }
