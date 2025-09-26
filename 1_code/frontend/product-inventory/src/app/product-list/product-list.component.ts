@@ -15,14 +15,12 @@ import {
   MatTableDataSource,
   MatTableModule,
 } from '@angular/material/table';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatTableModule,
-  ],
+  imports: [CommonModule, MatTableModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
@@ -31,26 +29,25 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   dataSource = new MatTableDataSource<Product>(this.products);
 
-  displayedColumns: string[] = [
-    'serial',
-    'name',
-    'quantity',
-    'price',
-    'actions',
-  ];
+  displayedColumns: string[] = [];
   selectedProduct: Product | undefined;
+  isAdmin = false;
 
-  //by using inject word you don't need the constructor to use the Product service
-  //private readonly productService = inject(ProductService);
-
-  // without using inject you must add this constructor section
   constructor(
     private readonly productService: ProductService,
+    public authService: AuthService,
     private readonly dialog: MatDialog,
     private readonly cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
+    // fetch role from backend/localStorage
+    this.isAdmin = this.authService.isAdmin;
+
+    this.displayedColumns = this.isAdmin
+      ? ['serial', 'name', 'quantity', 'price', 'actions']
+      : ['serial', 'name', 'quantity', 'price'];
+
     this.loadProducts();
   }
 
