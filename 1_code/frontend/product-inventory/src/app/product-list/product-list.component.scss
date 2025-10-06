@@ -1,7 +1,7 @@
 .product-container {
   width: 100%;
   margin: 20px auto;
-  background-color: #e5f2fc; /* light background */
+  background-color: #dde1e4; /* light background */
   border: 1px solid #3b523c; /* green border */
   border-radius: 10px;
   overflow: hidden;
@@ -14,17 +14,17 @@
   margin-top: 1rem;
 }
 
-::ng-deep .mat-column-serial {
+.mat-column-serial {
   width: 10%; /* small column */
 }
-::ng-deep .mat-column-name {
+.mat-column-name {
   width: 30%; /* bigger for long names */
 }
-::ng-deep .mat-column-quantity,
-::ng-deep .mat-column-price {
+.mat-column-quantity,
+.mat-column-price {
   width: 20%;
 }
-::ng-deep .mat-column-actions {
+.mat-column-actions {
   width: 10%;
   padding: 10px;
   text-align: center;
@@ -32,30 +32,30 @@
 
 button.add-action {
   font-weight: bolder;
-  background-color: #dde1e4;
+  background-color: #d4e7f5 !important;
   display: flex;
   margin: 12px auto;
   border-radius: 13px;
 }
 
 button.add-action:hover {
-  background-color: #d7f8d9;
+  background-color: #d7f8d9 !important;
   transform: scale(1.05);
 }
 
 button.custom-btn {
   font-weight: bolder;
-  background-color: #dde1e4;
+  background-color: #dde1e4 !important;
   justify-content: center; /* centers horizontally */
   margin: 12px 8px 8px 0;
   border-radius: 13px;
 }
 
 button.custom-btn:hover {
-  background-color: #b1ddf1;
+  background-color: #b1ddf1 !important;
   transform: scale(1.05);
 }
 
 button.custom-btn.delete:hover {
-  background-color: #f8b0b0;
+  background-color: #f8b0b0 !important;
 }

@@ -27,8 +27,9 @@
     <ng-container matColumnDef="actions" *ngIf="isAdmin">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let product">
-        <button mat-raised-button color="primary" (click)="editProduct(product)">Edit</button>
-        <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+        <button matButton class="custom-btn" mat-raised-button color="primary" (click)="editProduct(product)">Edit</button>
+        <button matButton class="custom-btn delete" mat-raised-button color="primary" (click)="deleteProduct(product)">Delete</button>
+
       </td>
     </ng-container>
 
@@ -37,6 +38,6 @@
   </mat-table>
 
   <div *ngIf="isAdmin">
-    <button mat-raised-button color="accent" (click)="addProduct()">+ Add Product</button>
+    <button mat-raised-button class="add-action" color="accent" (click)="addProduct()">+ Add Product</button>
   </div>
 </div>
