@@ -32,30 +32,30 @@
 
 button.add-action {
   font-weight: bolder;
-  background-color: #dde1e4;
+  background-color: #d4e7f5 !important;
   display: flex;
   margin: 12px auto;
   border-radius: 13px;
 }
 
 button.add-action:hover {
-  background-color: #d7f8d9;
+  background-color: #d7f8d9 !important;
   transform: scale(1.05);
 }
 
 button.custom-btn {
   font-weight: bolder;
-  background-color: #dde1e4;
+  background-color: #dde1e4 !important;
   justify-content: center; /* centers horizontally */
   margin: 12px 8px 8px 0;
   border-radius: 13px;
 }
 
 button.custom-btn:hover {
-  background-color: #b1ddf1;
+  background-color: #b1ddf1 !important;
   transform: scale(1.05);
 }
 
 button.custom-btn.delete:hover {
-  background-color: #f8b0b0;
+  background-color: #f8b0b0 !important;
 }
